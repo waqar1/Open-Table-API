@@ -17,7 +17,7 @@ const RestaurantList = ({ loading, error, restaurants }) => {
     return <List component={ErrorComponent} />;
   }
 
-  if (restaurants !== false) {
+  if (restaurants.length) {
     return <List items={restaurants} />;
   }
 

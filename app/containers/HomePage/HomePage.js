@@ -29,10 +29,10 @@ export default class HomePage extends React.PureComponent {
           <section className="centered">
             <h2>Restaurants List</h2>
           </section>
-          <section>
+          <section className="centered">
             <form onSubmit={onCitySubmit}>
               <label htmlFor="city">
-                Type city to show restaurants list
+                <p>Type city name to show restaurants list</p>
                 <input
                   id="city"
                   type="text"
