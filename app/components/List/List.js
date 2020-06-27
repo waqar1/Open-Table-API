@@ -9,7 +9,20 @@ const List = ({ component, items }) => {
   // If we have items, render them
   if (items) {
     content = items.map((item) => (
-      <li key={`item-${item.id}`}>{item.name}</li>
+      <li key={`item-${item.id}`}>
+        <p>
+          <span className="field">{'Name: '}</span><span className="name">{item.name}</span>
+        </p>
+        <p>
+          <span className="field">{'Address: '}</span><span className="address">{item.address}</span>
+        </p>
+        <p>
+          <span className="field">{'Price: '}</span><span className="price">{item.price}</span>
+        </p>
+        <p>
+          <span className="field">{'Area: '}</span><span className="area">{item.area}</span>
+        </p>
+      </li>
     ));
   } else {
     // Otherwise render a single component
