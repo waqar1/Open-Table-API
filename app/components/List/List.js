@@ -31,6 +31,7 @@ const List = ({ component, items }) => {
 
   return (
     <div className="list-wrapper">
+      <p>{`Total Restaurants: ${(items && items.length) || 0}`}</p>
       <ul>
         {content}
       </ul>
@@ -39,7 +40,7 @@ const List = ({ component, items }) => {
 };
 
 List.propTypes = {
-  component: PropTypes.elementType.isRequired,
+  component: PropTypes.elementType,
   items: PropTypes.array,
 };
 

@@ -4,19 +4,26 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import {
-  makeSelectRestaurants,
   makeSelectLoading,
   makeSelectError
 } from 'containers/App/selectors';
 import { loadRestaurants } from '../App/actions';
-import { changeCityName } from './actions';
-import { makeSelectCityName } from './selectors';
+import {
+  changeCityName,
+  filterResults
+} from './actions';
+import {
+  makeSelectCityName,
+  makeSelectFilter,
+  makeSelectFilteredRestaurants
+} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import HomePage from './HomePage';
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeCity: (evt) => dispatch(changeCityName(evt.target.value)),
+  onFilterChange: (evt) => dispatch(filterResults(evt.target.value)),
   onCitySubmit: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     dispatch(loadRestaurants());
@@ -24,8 +31,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-  restaurants: makeSelectRestaurants(),
+  restaurants: makeSelectFilteredRestaurants(),
   city: makeSelectCityName(),
+  filter: makeSelectFilter(),
   loading: makeSelectLoading(),
   error: makeSelectError()
 });

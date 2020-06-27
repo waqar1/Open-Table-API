@@ -11,7 +11,14 @@ import './style.scss';
 export default class HomePage extends React.PureComponent {
   render() {
     const {
-      loading, error, restaurants, onCitySubmit, onChangeCity, city
+      loading,
+      error,
+      restaurants,
+      onCitySubmit,
+      onChangeCity,
+      city,
+      filter,
+      onFilterChange
     } = this.props;
     const restaurantListProps = {
       loading,
@@ -31,16 +38,29 @@ export default class HomePage extends React.PureComponent {
           </section>
           <section className="centered">
             <form onSubmit={onCitySubmit}>
-              <label htmlFor="city">
-                <p>Type city name to show restaurants list</p>
-                <input
-                  id="city"
-                  type="text"
-                  placeholder="City Name"
-                  value={city}
-                  onChange={onChangeCity}
-                />
-              </label>
+              <div>
+                <label htmlFor="city">
+                  <span>{'Filter by City: '}</span>
+                  <input
+                    id="city"
+                    type="text"
+                    placeholder="City Name"
+                    value={city}
+                    onChange={onChangeCity}
+                  />
+                </label>
+                <label htmlFor="filter">
+                  <span>{'Refine search: '}</span>
+                  <input
+                    id="filter"
+                    type="text"
+                    placeholder="Name/Address/Area"
+                    value={filter}
+                    onChange={onFilterChange}
+                  />
+                </label>
+              </div>
+              <input className="hidden-input" type="submit" />
             </form>
             <RestaurantsList {...restaurantListProps} />
           </section>
@@ -56,5 +76,7 @@ HomePage.propTypes = {
   restaurants: PropTypes.array,
   onCitySubmit: PropTypes.func,
   city: PropTypes.string,
-  onChangeCity: PropTypes.func
+  onChangeCity: PropTypes.func,
+  filter: PropTypes.string,
+  onFilterChange: PropTypes.func,
 };
