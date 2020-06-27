@@ -24,7 +24,8 @@ export default class HomePage extends React.PureComponent {
     const restaurantListProps = {
       loading,
       error,
-      restaurants
+      restaurants,
+      city
     };
 
     return (

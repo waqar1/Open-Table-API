@@ -13,6 +13,12 @@ import { LOAD_RESTAURANTS } from '../App/constants';
 
 export function* getRestaurants() {
   const cityName = yield select(makeSelectCityName());
+
+  if (!cityName) {
+    yield put(restaurantsLoaded([]));
+    return;
+  }
+
   const requestURL = `http://opentable.herokuapp.com/api/restaurants?city=${cityName}&per_page=100`;
 
   try {
