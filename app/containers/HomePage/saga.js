@@ -13,11 +13,14 @@ import { LOAD_RESTAURANTS } from '../App/constants';
 
 export function* getRestaurants() {
   const cityName = yield select(makeSelectCityName());
-  const requestURL = `http://opentable.herokuapp.com/api/restaurants?city=${cityName}`;
+  const requestURL = `http://opentable.herokuapp.com/api/restaurants?city=${cityName}&per_page=100`;
 
   try {
-    const restaurants = yield call(request, requestURL);
-    yield put(restaurantsLoaded(restaurants));
+    const result = yield call(request, requestURL);
+    if (result.restaurants) {
+      const { restaurants } = result;
+      yield put(restaurantsLoaded(restaurants));
+    }
   } catch (err) {
     yield put(restaurantsLoadingError(err));
   }
@@ -26,6 +29,6 @@ export function* getRestaurants() {
 /**
  * Root saga
  */
-export default function* githubData() {
+export default function* getRestaurantsData() {
   yield takeLatest(LOAD_RESTAURANTS, getRestaurants);
 }

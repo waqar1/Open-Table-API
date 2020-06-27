@@ -17,7 +17,7 @@ import HomePage from './HomePage';
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeCity: (evt) => dispatch(changeCityName(evt.target.value)),
-  onSubmitForm: (evt) => {
+  onCitySubmit: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     dispatch(loadRestaurants());
   }

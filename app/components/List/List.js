@@ -9,7 +9,7 @@ const List = ({ component, items }) => {
   // If we have items, render them
   if (items) {
     content = items.map((item) => (
-      <ComponentToRender key={`item-${item.id}`} item={item} />
+      <li key={`item-${item.id}`}>{item.name}</li>
     ));
   } else {
     // Otherwise render a single component
