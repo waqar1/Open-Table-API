@@ -22,7 +22,10 @@ import saga from './saga';
 import HomePage from './HomePage';
 
 const mapDispatchToProps = (dispatch) => ({
-  onChangeCity: (evt) => dispatch(changeCityName(evt.target.value)),
+  onChangeCity: (evt) => {
+    dispatch(changeCityName(evt.target.value));
+    dispatch(loadRestaurants());
+  },
   onFilterChange: (evt) => dispatch(filterResults(evt.target.value)),
   onCitySubmit: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();

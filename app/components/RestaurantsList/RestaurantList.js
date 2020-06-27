@@ -12,7 +12,7 @@ const RestaurantList = ({ loading, error, restaurants }) => {
 
   if (error !== false) {
     const ErrorComponent = () => (
-      <ListItem item={'Something went wrong, please try again!'} />
+      <ListItem item={'No restaurants found!'} />
     );
     return <List component={ErrorComponent} />;
   }

@@ -6,6 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import RestaurantsList from 'components/RestaurantsList';
+import { DebounceInput } from 'react-debounce-input';
 import './style.scss';
 
 export default class HomePage extends React.PureComponent {
@@ -39,16 +40,15 @@ export default class HomePage extends React.PureComponent {
           <section className="centered">
             <form onSubmit={onCitySubmit}>
               <div>
-                <label htmlFor="city">
-                  <span>{'Filter by City: '}</span>
-                  <input
-                    id="city"
-                    type="text"
-                    placeholder="City Name"
-                    value={city}
-                    onChange={onChangeCity}
-                  />
-                </label>
+                <span>{'Filter by City: '}</span>
+                <DebounceInput
+                  id="city"
+                  type="text"
+                  placeholder="City Name"
+                  debounceTimeout={1000}
+                  value={city}
+                  onChange={onChangeCity}
+                />
                 <label htmlFor="filter">
                   <span>{'Refine search: '}</span>
                   <input

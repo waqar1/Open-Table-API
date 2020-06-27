@@ -2,7 +2,6 @@ import { createSelector } from 'reselect';
 import {
   makeSelectRestaurants
 } from '../App/selectors';
-import checkWord from '../../utils/checkWord';
 
 const selectHome = (state) => state.home;
 
@@ -21,11 +20,11 @@ const makeSelectFilteredRestaurants = () => createSelector(
   makeSelectFilter(),
   (restaurants, filter) => {
     if (!filter) return restaurants;
-    const filteredRestaurants = restaurants.filter((restaurant) => {
+    return restaurants.filter((restaurant) => {
       const combinedCriteria = `${restaurant.name} ${restaurant.address} ${restaurant.area}`;
-      return checkWord(filter, combinedCriteria);
+      const re = RegExp(`.*${filter.toLowerCase().split('').join('.*')}.*`);
+      return combinedCriteria.toLowerCase().match(re);
     });
-    return filteredRestaurants.length ? filteredRestaurants : restaurants;
   }
 );
 

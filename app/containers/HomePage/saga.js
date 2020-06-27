@@ -1,5 +1,5 @@
 /**
- * Gets the repositories of the user from Github
+ * Gets restaurant list from open table API
  */
 
 import {
