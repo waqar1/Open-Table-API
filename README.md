@@ -6,6 +6,14 @@ Ans: I spent half day on the assignment. If I have the opportunity I would enhan
 
 2. What was the most useful feature that was added to the latest version of your chosen language? Please include a snippet of code that shows how you've used it.
 
+Ans: There are many cool es6 features that are added to JavaScript. Few that I have used are below.
+
+destructuring  => <RestaurantsList {...restaurantListProps} />
+default parameters => ({ component, items } = {})
+Template Literals => (`.*${filter.toLowerCase().split('').join('.*')}.*`)
+Arrow functions => (param) => { console.log(param); }
+
+
 3. What were the more challenging parts of this assignment for you?
 
 Ans: Filtering out the search results.
