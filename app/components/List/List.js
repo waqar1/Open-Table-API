@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-const List = ({ component, items } = {}) => {
+const List = ({ component, items }) => {
   const { city, restaurants } = items;
   const ComponentToRender = component;
   let content = (<li></li>);
@@ -43,6 +43,10 @@ const List = ({ component, items } = {}) => {
 List.propTypes = {
   component: PropTypes.elementType,
   items: PropTypes.object,
+};
+
+List.defaultProps = {
+  items: {}
 };
 
 export default List;
