@@ -4,7 +4,7 @@
   "description": "BMO Assignment",
   "repository": {
     "type": "git",
-    "url": "git://github.com/waqar1/bmo-assignment.git"
+    "url": "git://github.com/waqar1/Open-table-API-assignment.git"
   },
   "author": "Waqar Azhar",
   "scripts": {
