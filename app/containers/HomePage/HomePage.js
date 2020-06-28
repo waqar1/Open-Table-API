@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-for */
 /*
  * HomePage
  */
@@ -41,15 +42,17 @@ export default class HomePage extends React.PureComponent {
           <section className="centered">
             <form onSubmit={onCitySubmit}>
               <div>
-                <span>{'Filter by City: '}</span>
-                <DebounceInput
-                  id="city"
-                  type="text"
-                  placeholder="City Name"
-                  debounceTimeout={1000}
-                  value={city}
-                  onChange={onChangeCity}
-                />
+                <label htmlFor="city">
+                  <span>{'Filter by City: '}</span>
+                  <DebounceInput
+                    id="city"
+                    type="text"
+                    placeholder="City Name"
+                    debounceTimeout={1000}
+                    value={city}
+                    onChange={onChangeCity}
+                  />
+                </label>
                 <label htmlFor="filter">
                   <span>{'Refine search: '}</span>
                   <input
